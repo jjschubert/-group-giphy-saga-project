@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Search from '../SearchGIF/SearchGIF.js'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import SearchGIF from '../SearchGIF/SearchGIF.js';
+import Display from '../DisplayGIFs/DisplayGIFs.js'
+
 
 
 class App extends Component {
 
   render() {
     return (
+
       <Router>
         <header>
         <div>
@@ -20,7 +23,7 @@ class App extends Component {
         </header>
         
 
-        <Route exact path="/" component={SearchGIF} />
+        <Route exact path="/" component={Search} />
         <Route path="/favorites" component={Favorites} />
 
       </Router>
