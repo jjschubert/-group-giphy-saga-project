@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class Display extends Component {
     saveGIF = (gif) => {
-        this.props.dispatch({ type: 'SAVE_FAV', payload: gif })
+        this.props.dispatch({ type: 'SET_FAVORITES', payload: gif })
     }
     render() {
         return (
