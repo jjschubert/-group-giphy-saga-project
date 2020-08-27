@@ -16,15 +16,13 @@ class App extends Component {
         <header>
         <div>
         <h1>Giphy Search!</h1>
-        <Search />
-        <Favorites />
         </div>
         <nav>
           <Link to="/">Search</Link>
           <Link to="/favorites" >Favorites</Link>
         </nav>
         </header>
-        
+        <Display />
 
         <Route exact path="/" component={Search} />
         <Route path="/favorites" component={Favorites} />
