@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Search from '../SearchGIF/SearchGIF.js'
 
 
 class App extends Component {
@@ -7,7 +8,9 @@ class App extends Component {
     return (
       <div>
         <h1>Giphy Search!</h1>
+        <Search />
       </div>
+
     );
   }
   
