@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 // add a new favorite 
 router.post('/', (req, res) => {
-  const newGif = req.body;
+  const newGif = req.body.url;
   const queryText = `INSERT INTO favorites ("image_path")
                       VALUES ($1);`
   pool.query(queryText, [newGif])
