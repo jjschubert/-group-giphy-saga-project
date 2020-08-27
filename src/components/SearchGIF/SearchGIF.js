@@ -14,6 +14,12 @@ class Search extends Component {
 
     getGIFs = () => {
         this.props.dispatch({type:'FETCH_GIFS', payload:this.state})
+    };
+
+    clearInput = () => {
+        this.setState({
+            search:''
+        })
     }
     render() {
         return(

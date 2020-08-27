@@ -8,8 +8,9 @@ class App extends Component {
     return (
       <div>
         <h1>Giphy Search!</h1>
+        <Search />
       </div>
-      <Search />
+
     );
   }
   
