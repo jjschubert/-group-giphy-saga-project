@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from '../SearchGIF/SearchGIF.js'
+import Favorites from '../Favorites/Favorites.js'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import SearchGIF from '../SearchGIF/SearchGIF.js';
 import Display from '../DisplayGIFs/DisplayGIFs.js'
@@ -14,7 +15,9 @@ class App extends Component {
       <Router>
         <header>
         <div>
-          <h1>Giphy Search!</h1>
+        <h1>Giphy Search!</h1>
+        <Search />
+        <Favorites />
         </div>
         <nav>
           <Link to="/">Search</Link>
