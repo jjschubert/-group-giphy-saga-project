@@ -31,4 +31,4 @@ class Search extends Component {
     }
 }
 
-export default connect()(Search)
+export default Search
