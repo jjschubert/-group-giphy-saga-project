@@ -5,19 +5,37 @@ class CategoryForm extends Component {
 
 
     state = {
-        category: ''
+        category: 1
     }
 
     handleChange = (event) => {
-        this.setState({
-            category: event.target.value
-        })
+        if (event.target.value === 'funny') {
+            this.setState({
+                category: 1
+            })
+        } else if (event.target.value === 'cohort') {
+            this.setState({
+                category: 2
+            })
+        } else if (event.target.value === 'cartoon') {
+            this.setState({
+                category: 3
+            })
+        } else if (event.target.value === 'NSFW') {
+            this.setState({
+                category: 4
+            })
+        } else if (event.target.value === 'meme') {
+            this.setState({
+                category: 5
+            })
+        }
     }
 
     addCategory = (id) => {
         console.log(id, this.state.category);
-        let gifToLabel = {id: id, category: this.state.category}
-        this.props.dispatch({type: 'ADD_CATEGORY', payload: gifToLabel})
+        let gifToLabel = { id: id, category: this.state.category }
+        this.props.dispatch({ type: 'ADD_CATEGORY', payload: gifToLabel })
     }
 
     render() {

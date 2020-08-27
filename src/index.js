@@ -43,13 +43,22 @@ function* fetchFavorites() {
     }
 }
 
+function* setCategory(action) {
+    try {
+        let favId = action.payload.id
+        yield axios.put(`/api/favorite/${favId}`, action.payload)
 
+    } catch (err) {
+        console.log('error in set category', err);
+    }
+}
 
 
 
 function* watcherSaga() {
     yield takeEvery('FETCH_GIFS', fetchSearchResults)
     yield takeEvery('FETCH_FAVORITES', fetchFavorites)
+    yield takeEvery('ADD_CATEGORY', setCategory)
   }
   
   const sagaMiddleware = createSagaMiddleware();
