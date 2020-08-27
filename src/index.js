@@ -50,6 +50,7 @@ function* fetchFavorites() {
 function* watcherSaga() {
     yield takeEvery('FETCH_GIFS', fetchSearchResults)
     yield takeEvery('FETCH_FAVORITES', fetchFavorites)
+    // yield takeEvery('ADD_CATEGORY')
   }
   
   const sagaMiddleware = createSagaMiddleware();
