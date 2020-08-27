@@ -10,8 +10,12 @@ import App from './components/App/App';
 
 
 const searchResults = (state=[], action) => {
-
-    return state
+    switch (action.type) {
+        case 'SEARCH_GIF':
+        return action.payload;
+        default:
+            return state
+    }
 }
 
 const favoriteGifs = (state=[], action) => {
@@ -24,9 +28,12 @@ const favoriteGifs = (state=[], action) => {
 }
 
 
-function* fetchSearchResults() {
+function* fetchSearchResults(action) {
+
     try{
-        
+        let response = yield axios.get(`/api/search/${action.payload.search}`);
+        yield put({type: 'SEARCH_GIF', payload: [response.data.data[0].images.original, response.data.data[1].images.original, 
+            response.data.data[2].images.original, response.data.data[3].images.original, response.data.data[4].images.original]})
     } catch(err) {
         console.log('error in fetchSearchResults', err)
     }
@@ -43,13 +50,22 @@ function* fetchFavorites() {
     }
 }
 
+function* setCategory(action) {
+    try {
+        let favId = action.payload.id
+        yield axios.put(`/api/favorite/${favId}`, action.payload)
 
+    } catch (err) {
+        console.log('error in set category', err);
+    }
+}
 
 
 
 function* watcherSaga() {
     yield takeEvery('FETCH_GIFS', fetchSearchResults)
     yield takeEvery('FETCH_FAVORITES', fetchFavorites)
+    yield takeEvery('ADD_CATEGORY', setCategory)
   }
   
   const sagaMiddleware = createSagaMiddleware();
