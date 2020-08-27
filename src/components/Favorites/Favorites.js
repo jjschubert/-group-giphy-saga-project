@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 class Favorite extends Component {
   
 componentDidMount() {
-    this.props.dispatch({type: 'GET_FAVORITES'})
+    this.props.dispatch({type: 'FETCH_FAVORITES'})
 }
 
     render() {

@@ -14,14 +14,18 @@ const searchResults = (state=[], action) => {
 }
 
 const favoriteGifs = (state=[], action) => {
-
-    return state
+    switch (action.type) {
+        case 'SET_FAVORITES':
+        return action.payload;
+        default:
+            return state
+    }
 }
 
 
 function* fetchSearchResults() {
     try{
-
+        
     } catch(err) {
         console.log('error in fetchSearchResults', err)
     }
@@ -29,7 +33,10 @@ function* fetchSearchResults() {
 
 function* fetchFavorites() {
     try{
-
+        let response = yield axios.get('/api/favorite')
+        console.log(response.data);
+        //send to redux
+        yield put({type: 'SET_FAVORITES', payload: response.data})
     } catch(err) {
         console.log('error in fetchFavorites', err)
     }
