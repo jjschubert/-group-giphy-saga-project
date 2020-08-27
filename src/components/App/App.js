@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from '../SearchGIF/SearchGIF.js'
+import Favorites from '../Favorites/Favorites.js'
 
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
       <div>
         <h1>Giphy Search!</h1>
         <Search />
+        <Favorites />
       </div>
 
     );
