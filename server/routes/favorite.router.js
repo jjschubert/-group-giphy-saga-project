@@ -33,12 +33,13 @@ router.post('/', (req, res) => {
 
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
-  const newGif = req.body;
-  const favId = req.params.favId
+  console.log('body:', req.body, 'params', req.params.favId);
+  const gifId = req.body.id;
+  const favId = req.body.category;
   const queryText = `UPDATE favorites 
                     SET "category_id" = $1
                     WHERE id = $2;`
-  pool.query(queryText, [newGif, favId])
+  pool.query(queryText, [favId, gifId])
   .then((results) => {
     res.sendStatus(201)
   }).catch((error) => {
