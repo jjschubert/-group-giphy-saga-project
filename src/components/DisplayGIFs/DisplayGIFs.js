@@ -4,7 +4,12 @@ import axios from 'axios';
 
 class Display extends Component {
     saveGIF = (gif) => {
-        this.props.dispatch({ type: 'SAVE_FAV', payload: gif })
+        axios.post('/api/favorite', gif)
+        .then(response => {
+            console.log('added to favorites on db!')
+        }).catch(error => {
+            console.log('error in POST:', error)
+        })
     }
     render() {
         return (
