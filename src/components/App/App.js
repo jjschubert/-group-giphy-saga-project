@@ -3,8 +3,8 @@ import Search from '../SearchGIF/SearchGIF.js'
 import Favorites from '../Favorites/Favorites.js'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import SearchGIF from '../SearchGIF/SearchGIF.js';
-import Display from '../DisplayGIFs/DisplayGIFs.js'
 import './App.css';
+
 
 
 
@@ -22,12 +22,10 @@ class App extends Component {
 
         </div>
         <nav>
-          <Link to="/">Search</Link>
-          <Link to="/favorites" >Favorites</Link>
+          <button><Link to="/">Search</Link></button>
+          <button><Link to="/favorites" >Favorites</Link></button>
         </nav>
         </header>
-
-        <Display />
 
         <Route exact path="/" component={Search} />
         <Route path="/favorites" component={Favorites} />

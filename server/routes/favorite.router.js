@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   const queryText = `SELECT "category".name, "favorites".id, "favorites".category_id, "favorites".image_path FROM "category" 
   RIGHT JOIN "favorites" ON "category".id = "favorites".category_id
   ORDER BY "category".name DESC;`
+
   pool.query(queryText)
   .then((results) => {
     res.send(results.rows)
