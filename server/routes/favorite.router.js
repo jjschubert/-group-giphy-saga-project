@@ -5,10 +5,11 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  console.log('GET REQUEST FOR FAVORITES');
+  console.log('')
   const queryText = `SELECT "category".name, "favorites".id, "favorites".category_id, "favorites".image_path FROM "category" 
   RIGHT JOIN "favorites" ON "category".id = "favorites".category_id
-  ORDER BY "favorites".id ASC;`
+  ORDER BY "category".name DESC;`
+
   pool.query(queryText)
   .then((results) => {
     res.send(results.rows)
@@ -20,6 +21,8 @@ router.get('/', (req, res) => {
 
 // add a new favorite 
 router.post('/', (req, res) => {
+  console.log('inside fav post')
+
   const newGif = req.body.url;
   const queryText = `INSERT INTO favorites ("image_path")
                       VALUES ($1);`
