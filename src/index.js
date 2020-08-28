@@ -54,7 +54,7 @@ function* setCategory(action) {
     try {
         let favId = action.payload.id
         yield axios.put(`/api/favorite/${favId}`, action.payload)
-
+        yield put ({type: 'FETCH_FAVORITES'})
     } catch (err) {
         console.log('error in set category', err);
     }
