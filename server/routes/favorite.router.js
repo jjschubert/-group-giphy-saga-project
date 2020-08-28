@@ -1,13 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
-
+require('dotenv').config();
 const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "favorites" 
-                     RIGHT JOIN "category" 
-                    ON "category".id = "favorites".category_id;`
+  const queryText = `SELECT "category".name, "favorites".id, "favorites".category_id, "favorites".image_path FROM "category" 
+  JOIN "favorites" ON "category".id = "favorites".category_id
+  ORDER BY "favorites".id ASC;`
   pool.query(queryText)
   .then((results) => {
     res.send(results.rows)

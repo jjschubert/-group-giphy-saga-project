@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import CategoryForm from '../CategoryForm/CategoryForm';
 
-class Favorite extends Component {
+class Favorites extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_FAVORITES' })
@@ -18,6 +18,7 @@ class Favorite extends Component {
                 <h3>Favorites</h3>
                 
                 {this.props.reduxState.favoriteGifs.map((gif) => {
+                     console.log(gif.id);
                     return (
                         <div key={gif.id}>
                             <img src={gif.image_path} alt={gif.name} />
@@ -35,4 +36,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-export default connect(mapStateToProps)(Favorite)
+export default connect(mapStateToProps)(Favorites)
