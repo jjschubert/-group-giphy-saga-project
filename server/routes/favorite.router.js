@@ -1,13 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
-
+require('dotenv').config();
 const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "favorites" 
-                     RIGHT JOIN "category" 
-                    ON "category".id = "favorites".category_id;`
+  console.log('')
+  const queryText = `SELECT "category".name, "favorites".id, "favorites".category_id, "favorites".image_path FROM "category" 
+  RIGHT JOIN "favorites" ON "category".id = "favorites".category_id
+  ORDER BY "category".name DESC;`
   pool.query(queryText)
   .then((results) => {
     res.send(results.rows)
@@ -19,7 +20,9 @@ router.get('/', (req, res) => {
 
 // add a new favorite 
 router.post('/', (req, res) => {
-  const newGif = req.body;
+  console.log('inside fav post')
+
+  const newGif = req.body.url;
   const queryText = `INSERT INTO favorites ("image_path")
                       VALUES ($1);`
   pool.query(queryText, [newGif])

@@ -10,12 +10,11 @@ import App from './components/App/App';
 
 
 const searchResults = (state=[], action) => {
-    switch (action.type) {
-        case 'SEARCH_GIF':
-        return action.payload;
-        default:
-            return state
+    if(action.type === 'SEARCH_GIF') {
+        return action.payload
     }
+
+    return state
 }
 
 const favoriteGifs = (state=[], action) => {
@@ -32,6 +31,7 @@ function* fetchSearchResults(action) {
 
     try{
         let response = yield axios.get(`/api/search/${action.payload.search}`);
+        yield console.log(response.data);
         yield put({type: 'SEARCH_GIF', payload: [response.data.data[0].images.original, response.data.data[1].images.original, 
             response.data.data[2].images.original, response.data.data[3].images.original, response.data.data[4].images.original]})
     } catch(err) {
@@ -54,7 +54,7 @@ function* setCategory(action) {
     try {
         let favId = action.payload.id
         yield axios.put(`/api/favorite/${favId}`, action.payload)
-
+        yield put ({type: 'FETCH_FAVORITES'})
     } catch (err) {
         console.log('error in set category', err);
     }

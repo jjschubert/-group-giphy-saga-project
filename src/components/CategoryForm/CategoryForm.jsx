@@ -33,7 +33,8 @@ class CategoryForm extends Component {
     }
 
     addCategory = (id) => {
-        console.log(id, this.state.category);
+        console.log('id', this.props.id)
+        console.log('category', this.state.category);
         let gifToLabel = { id: id, category: this.state.category }
         this.props.dispatch({ type: 'ADD_CATEGORY', payload: gifToLabel })
     }
