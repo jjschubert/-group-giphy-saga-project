@@ -16,7 +16,7 @@ const searchResults = (state=[], action) => {
 
     return state
 }
-
+ 
 const favoriteGifs = (state=[], action) => {
     switch (action.type) {
         case 'SET_FAVORITES':
