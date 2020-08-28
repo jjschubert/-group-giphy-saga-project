@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import Display from '../DisplayGIFs/DisplayGIFs.js'
 
 class Search extends Component {
     state = {
@@ -23,10 +24,14 @@ class Search extends Component {
     }
     render() {
         return(
+            <>
             <form>
                 <input placeholder='Search GIFs' onChange={this.handleChange} value={this.state.search} />
                 <button onClick={() => {this.getGIFs(); this.clearInput()}}>Get GIFs</button>
             </form>
+
+            <Display />
+            </>
         )
     }
 }
